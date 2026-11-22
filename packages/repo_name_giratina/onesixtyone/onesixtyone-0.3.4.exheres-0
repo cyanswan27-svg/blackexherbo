@@ -1,0 +1,14 @@
+require github [ user="trailofbits" pn="onesixtyone" tag="v${PV}" ]
+SLOT="0"
+PLATFORMS="~amd64"
+MYOPTIONS=""
+DEPENDENCIES=""
+src_configure() {
+   ./configure --prefix=/usr/$(exhost --target)
+}
+src_compile() {
+    emake -j1
+}
+src_install() {
+    dobin onesixtyone
+}

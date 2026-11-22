@@ -1,0 +1,11 @@
+require cmake github [ user="Ettercap" pn="ettercap" tag="v${PV}" ]  
+SLOT="0"
+PLATFORMS="~amd64"
+MYOPTIONS=""
+DEPENDENCIES=""
+src_compile() {
+    emake -j4
+}
+src_install() {
+    dobin ettercap
+}

@@ -1,0 +1,11 @@
+require github [ user="ffuf" pn="ffuf" tag="v${PV}" ] go
+SLOT="0"
+PLATFORMS="~amd64"
+MYOPTIONS=""
+DEPENDENCDIES=""
+src_compile() {
+    go_src_compile
+}
+src_install() {
+    go_src_install
+}

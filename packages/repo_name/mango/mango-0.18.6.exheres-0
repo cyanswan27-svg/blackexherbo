@@ -1,0 +1,32 @@
+# Copyright 2026 cyanswan27 <cyanswan27@gmail.com>
+# Distributed under the terms of the GNU General Public License v2
+SUMMARY="Mango Window Manager"
+require github [ user='mangowm' ] meson
+SLOT="0"
+PLATFORMS="~amd64"
+MYOPTIONS=""
+
+DEPENDENCIES="
+    build:
+        virtual/pkg-config
+    build+run:
+        dev-libs/scenefx
+        sys-libs/wlroots
+        sys-libs/wayland
+        sys-libs/wayland-protocols
+        dev-libs/cjson
+        sys-libs/libinput
+        x11-dri/libdrm
+        x11-libs/libxkbcommon
+        x11-libs/pixman
+        x11-libs/pango
+        dev-libs/pcre2
+"
+MESON_SRC_CONFIGURE_PARAMS=(
+        -Dxwayland=disabled
+        -Db_ndebug=true
+)
+src_install() {
+    meson_src_install
+    edo rm -rf "${IMAGE}/usr/lib"
+}

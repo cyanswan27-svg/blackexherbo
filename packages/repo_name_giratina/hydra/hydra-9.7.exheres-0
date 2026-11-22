@@ -1,0 +1,22 @@
+
+require github [ user='vanhauser-thc' pn='thc-hydra' tag="v${PV}" ] 
+
+SLOT="0"
+PLATFORMS="~amd64"
+MYOPTIONS=""
+DEPENDENCIES="
+"
+
+src_configure() {
+    ./configure --prefix=/usr/$(exhost --target) --disable-xhydra --nostrip
+}
+
+src_compile() {
+    emake -j1
+    
+}
+DEFAULT_SRC_INSTALL_PARAMS=( /usr/$(exhost --target) )
+src_install() {
+    default
+    edo rm -rf "${IMAGE}/usr/lib"
+}

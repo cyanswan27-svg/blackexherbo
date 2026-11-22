@@ -1,0 +1,31 @@
+require github [ user="openwall" pn="john" ]
+DOWNLOADS=https://github.com/openwall/john/archive/bleeding-jumbo.tar.gz
+WORK="${WORKBASE}/john-bleeding-jumbo/src"
+SLOT="0"
+PLATFORMS="~amd64"
+MYOPTIONS=""
+DEPENDENCIES="
+    build+run:
+        dev-libs/openssl
+        sys-libs/zlib
+        app-arch/bzip2
+        dev-libs/gmp
+
+
+
+"
+
+src_configure() {
+    AS="${CC}" LD="${CC}" econf
+}
+src_compile() {
+    emake
+}
+src_install() {
+    find "${WORK}"/../run -executable -maxdepth 1 \( -type f -o -type l \) ! -name "*.*" -exec dobin {} +
+    insinto /usr/$(exhost --target)/share/john
+    doins -r "${WORK}"/../run/*.conf
+    doins -r "${WORK}"/../run/*.chr
+    doins -r "${WORK}"/../run/*.lst
+    find "${IMAGE}"/usr/$(exhost --target)/share/john -type d -empty -delete
+}

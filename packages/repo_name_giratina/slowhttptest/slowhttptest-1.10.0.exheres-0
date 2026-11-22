@@ -1,0 +1,6 @@
+require github [ user="shekyan" pn="slowhttptest" tag="v${PV}" ]
+SLOT="0"
+PLATFORMS="~amd64"
+MYOPTIONS=""
+DEPENDENCIES=""
+

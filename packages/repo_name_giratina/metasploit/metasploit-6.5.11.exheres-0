@@ -1,0 +1,39 @@
+RESTRICT="strip"
+require github [ user='rapid7' pn='metasploit-framework' ] ruby
+SLOT="0"
+PLATFORMS="~amd64"
+MYOPTIONS=""
+DEPENDENCIES="
+    build+run:
+        dev-lang/ruby
+        dev-libs/libpcap
+        dev-db/postgresql
+        dev-db/sqlite
+        dev-libs/libxml2
+        dev-libs/libxslt
+        dev-libs/openssl
+        dev-libs/libyaml
+        sys-libs/zlib
+        sys-libs/readline
+        sys-libs/ncurses
+"
+
+src_compile() {
+    export BUNDLE_USER_HOME=${WORKBASE}
+    export BUNDLE_PATH=${WORK}/vendor/bundle
+    export GEM_HOME=${WORKBASE}/gemhome
+    esandbox disable_net
+    bundle install || die
+}
+src_install() {
+    dodir /usr/share/metasploit-framework
+    cp -a ${WORK}/. ${IMAGE}/usr/share/metasploit-framework
+    find "${IMAGE}"/usr/share/metasploit-framework -type d -empty -delete
+    herebin msfconsole <<EOF
+#!/bin/sh
+export BUNDLE_PATH=/usr/share/metasploit-framework/vendor/bundle
+export BUNDLE_GEMFILE=/usr/share/metasploit-framework/Gemfile
+cd /usr/share/metasploit-framework || exit 1
+exec bundle exec ruby /usr/share/metasploit-framework/msfconsole "\$@"
+EOF
+}

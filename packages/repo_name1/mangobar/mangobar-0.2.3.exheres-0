@@ -1,0 +1,24 @@
+# Copyright 2026 cyanswan27 <cyanswan27@gmail.com>
+# Distributed under the terms of the GNU General Public License v2
+require github [ user='mangowm' ] meson
+SUMMARY="Mango Bar For Mango Window Manager"
+SLOT="0"
+PLATFORMS="~amd64"
+MYOPTIONS=""
+
+DEPENDENCIES="
+    build:
+        virtual/pkg-config
+    build+run:
+        sys-libs/wayland
+        sys-libs/wayland-protocols
+        dev-libs/cjson
+        media-libs/fcft
+        x11-libs/pixman:1
+        x11-libs/pango
+        x11-libs/gdk-pixbuf:2.0
+        media-sound/pulseaudio
+        sys-apps/systemd
+        x11-libs/cairo
+"
+

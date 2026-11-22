@@ -1,0 +1,6 @@
+require github [ user="jmk-foofus" pn="medusa" ] 
+SLOT="0"
+PLATFORMS="~amd64"
+MYOPTIONS=""
+DEPENDENCIES=""
+

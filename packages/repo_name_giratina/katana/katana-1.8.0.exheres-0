@@ -1,0 +1,14 @@
+require github [ user="projectdiscovery" pn="katana" tag="v${PV}" ] go
+SLOT="0"
+PLATFORMS="~amd64"
+MYOPTIONS=""
+DEPENDENCIES=""
+src_unpack() { 
+    go_src_unpack
+}
+src_compile() {
+    go_src_compile
+}
+src_install() {
+    go_src_install
+}

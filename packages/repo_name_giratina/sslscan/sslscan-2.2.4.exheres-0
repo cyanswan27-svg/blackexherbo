@@ -1,0 +1,11 @@
+require github [ user="rbsec" pn="sslscan" ] 
+SLOT="0"
+PLATFORMS="~amd64"
+MYOPTIONS=""
+DEPENDENCIES=""
+src_compile() {
+    emake -j4
+}
+src_install() {
+    dobin sslscan
+}

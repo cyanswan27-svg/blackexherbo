@@ -1,0 +1,9 @@
+require github [ user="netdiscover-scanner" pn="netdiscover" ]
+SLOT="0"
+PLATFORMS="~amd64"
+MYOPTIONS=""
+DEPENDENCIES=""
+src_prepare() {
+    edo autoreconf -fi
+}
+

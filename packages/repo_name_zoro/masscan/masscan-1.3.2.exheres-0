@@ -1,0 +1,13 @@
+require github [ user="robertdavidgraham" pn="masscan" ] 
+SLOT="0"
+PLATFORMS="~amd64"
+MYOPTIONS=""
+DEPENDENCIES=""
+
+src_compile() {
+    emake CC="${CC}"
+}
+DEFAULT_SRC_INSTALL_PARAMS=( /usr/$(exhost --target) )
+src_install() {
+    dobin bin/masscan
+}

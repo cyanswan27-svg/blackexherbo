@@ -1,0 +1,14 @@
+require github [ user="JoeDog" pn="siege" ]
+SLOT="0"
+PLATFORMS="~amd64"
+MYOPTIONS=""
+DEPENDENCIES=""
+src_prepare() {
+    edo autoreconf -fi
+}
+src_compile() {
+    emake -j4 -C src
+}
+src_install() {
+    dobin src/siege
+}
