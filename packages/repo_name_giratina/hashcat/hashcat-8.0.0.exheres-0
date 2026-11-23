@@ -1,0 +1,18 @@
+RESTRICT="strip"
+require github [ user="hashcat" pn="hashcat" tag="v${PV}" ] 
+SLOT="0"
+PLATFORMS="~amd64"
+MYOPTIONS=""
+DEPENDENCIES=""
+src_prepare() {
+    sed -i "s/install_library_dev //" src/Makefile
+}
+src_compile() {
+    esandbox disable_net
+    emake CC="${CC}" PREFIX="/usr/$(exhost --target)" SHARED_FOLDER="/usr/share/hashcat" LIBRARY_FOLDER="/usr/$(exhost --target)/lib" DOCUMENT_FOLDER="/usr/share/doc/${PNVR}" 
+    esandbox enable_net
+}
+src_install() {
+    emake DESTDIR="${IMAGE}" PREFIX="/usr/$(exhost --target)" SHARED_FOLDER="/usr/share/hashcat" LIBRARY_FOLDER="/usr/$(exhost --target)/lib" DOCUMENT_FOLDER="/usr/share/doc/${PNVR}" install
+    find ${IMAGE}/usr/$(exhost --target)/share -type d -delete
+}
