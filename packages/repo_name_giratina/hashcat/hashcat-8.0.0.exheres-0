@@ -1,3 +1,5 @@
+# Copyright 2026 cyanswan27 <cyanswan27@gmail.com>
+# Distributed under the terms of the GNU General Public License v2
 RESTRICT="strip"
 require github [ user="hashcat" pn="hashcat" tag="v${PV}" ] 
 SLOT="0"
