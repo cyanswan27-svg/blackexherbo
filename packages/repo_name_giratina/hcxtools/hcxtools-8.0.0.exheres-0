@@ -1,0 +1,21 @@
+# Copyright 2026 cyanswan27 <cyanswan27@gmail.com>
+# Distributed under the terms of the GNU General Public License v2
+require github [ user="ZerBea" pn="hcxtools" ]
+SLOT="0"
+PLATFORMS="~amd64"
+MYOPTIONS=""
+DEPENDENCIES="
+    build:
+        virtual/pkg-config
+    build+run:
+        dev-libs/openssl
+        net-misc/curl
+        sys-libs/zlib
+"
+src_compile() {
+    emake PREFIX=/usr
+}
+src_install() {
+    emake DESTDIR="${IMAGE}" PREFIX=/usr/$(exhost --target) install
+    emagicdocs
+}
