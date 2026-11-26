@@ -1,4 +1,5 @@
 require github [ user="atx" pn="wtype" tag="v${PV}" ] meson
+SUMMARY="Wayland virtual keyboard utility"
 SLOT="0"
 PLATFORMS="~amd64"
 MYOPTIONS=""
