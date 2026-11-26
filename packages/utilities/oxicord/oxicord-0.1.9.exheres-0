@@ -1,7 +1,6 @@
 # Copyright 2026 cyanswan27 <cyanswan27@gmail.com>
 # Distributed under the terms of the GNU General Public License v2
 require cargo github [ user="linuxmobile" pn="oxicord" tag="v${PV}" ] 
-SUMMARY="Terminal based discord client"
 SLOT="0"
 PLATFORMS="~amd64"
 MYOPTIONS=""
