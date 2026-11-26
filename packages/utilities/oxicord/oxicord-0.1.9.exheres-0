@@ -1,6 +1,7 @@
 # Copyright 2026 cyanswan27 <cyanswan27@gmail.com>
 # Distributed under the terms of the GNU General Public License v2
 require cargo github [ user="linuxmobile" pn="oxicord" tag="v${PV}" ] 
+SUMMARY="terminal discord client"
 SLOT="0"
 PLATFORMS="~amd64"
 MYOPTIONS=""
@@ -17,9 +18,4 @@ src_prepare() {
     sed -i 's/"chafa-dyn",\?//g' Cargo.toml
     cargo generate-lockfile --offline
 }
-src_compile() {
-    cargo_src_compile
-}
-src_install() {
-    cargo_src_install
-}
+

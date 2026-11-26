@@ -1,6 +1,7 @@
 # Copyright 2026 cyanswan27 <cyanswan27@gmail.com>
 # Distributed under the terms of the GNU General Public License v2
 require github [ user="pakhromov" pn="mako-daemonless" tag="v${PV}" ] meson 
+SUMMARY="daemonless notifications"
 SLOT="0"
 PLATFORMS="~amd64"
 MYOPTIONS=""
@@ -18,9 +19,4 @@ DEPENDENCIES="
 MESON_SRC_CONFIGURE_PARAMS=(
         -Dsd-bus-provider=libsystemd
 )
-src_compile() {
-    meson_src_compile
-}
-src_install() {
-    meson_src_install
-}
+

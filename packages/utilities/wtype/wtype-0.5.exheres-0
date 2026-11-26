@@ -1,20 +1,12 @@
 require github [ user="atx" pn="wtype" tag="v${PV}" ] meson
+SUMMARY="keyboard utiltity"
 SLOT="0"
 PLATFORMS="~amd64"
 MYOPTIONS=""
 DEPENDENCIES="
     build:
-        sys-devel/meson
-        sys-devel/ninja
         sys-libs/wayland-protocols
-        virtual/pkg-config
     build+run:
         sys-libs/wayland
         x11-libs/libxkbcommon
 "
-src_compile() {
-    meson_src_compile
-}
-src_install() {
-    meson_src_install
-}
