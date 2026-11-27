@@ -20,7 +20,7 @@ DEPENDENCIES="
         x11-libs/libxkbcommon
         x11-libs/pixman
         x11-libs/pango
-        dev-libs/pcre2:=
+        dev-libs/pcre2
 "
 MESON_SRC_CONFIGURE_PARAMS=(
         -Dxwayland=disabled
