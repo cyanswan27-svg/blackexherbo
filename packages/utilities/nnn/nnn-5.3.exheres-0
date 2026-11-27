@@ -9,8 +9,8 @@ DEPENDENCIES="
     build:
         virtual/pkg-config
     build+run:
-        sys-libs/ncurses
-        sys-libs/readline
+        sys-libs/ncurses:=
+        sys-libs/readline:=
 "
 src_compile() {
     emake -j4

@@ -12,7 +12,7 @@ DEPENDENCIES="
         sys-libs/wayland-protocols
         dev-libs/cjson
         media-libs/fcft
-        x11-libs/pixman:1
+        x11-libs/pixman
         x11-libs/pango
         x11-libs/gdk-pixbuf:2.0
         media-sound/pulseaudio
