@@ -1,22 +1,30 @@
 # Copyright 2026 cyanswan27 <cyanswan27@gmail.com>
 # Distributed under the terms of the GNU General Public License v2
-require github [ user="pakhromov" pn="mako-daemonless" tag="v${PV}" ] meson 
-SUMMARY="daemonless notifications"
+
+require github [ user="pakhromov" pn="mako-daemonless" tag="v${PV}" ] meson
+
+SUMMARY="Lightweight Wayland notification daemon (daemonless fork of mako)"
+HOMEPAGE="https://github.com/pakhromov/mako-daemonless"
+
+LICENCES="MIT"
 SLOT="0"
 PLATFORMS="~amd64"
 MYOPTIONS=""
+
 DEPENDENCIES="
     build:
         sys-libs/wayland-protocols
         virtual/pkg-config
     build+run:
+        dev-libs/glib:2
+        sys-apps/systemd
         sys-libs/wayland
         x11-libs/cairo
         x11-libs/pango
-        dev-libs/glib:2
-        sys-apps/systemd
 "
+
 MESON_SRC_CONFIGURE_PARAMS=(
-        -Dsd-bus-provider=libsystemd
+    -Dsd-bus-provider=libsystemd
 )
+
 

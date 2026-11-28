@@ -1,21 +1,28 @@
 # Copyright 2026 cyanswan27 <cyanswan27@gmail.com>
 # Distributed under the terms of the GNU General Public License v2
-require cargo github [ user="linuxmobile" pn="oxicord" tag="v${PV}" ] 
-SUMMARY="terminal discord client"
+
+require cargo github [ user="linuxmobile" pn="oxicord" tag="v${PV}" ]
+
+SUMMARY="Terminal-based Discord client written in Rust"
+HOMEPAGE="https://github.com"
+
+LICENCES="GPL-3"
 SLOT="0"
 PLATFORMS="~amd64"
 MYOPTIONS=""
+
 DEPENDENCIES="
     build:
         dev-lang/rust
         virtual/pkg-config
     build+run:
-        sys-apps/dbus
         dev-libs/glib:2
+        sys-apps/dbus
 "
+
 src_prepare() {
     default
-    sed -i 's/"chafa-dyn",\?//g' Cargo.toml
     cargo generate-lockfile --offline
 }
+
 

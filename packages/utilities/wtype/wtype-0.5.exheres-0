@@ -1,12 +1,22 @@
+# Copyright 2026 cyanswan27 <cyanswan27@gmail.com>
+# Distributed under the terms of the GNU General Public License v2
+
 require github [ user="atx" pn="wtype" tag="v${PV}" ] meson
-SUMMARY="keyboard utiltity"
+
+SUMMARY="xdotool type for Wayland"
+HOMEPAGE="https://github.com/atx/wtype"
+
+LICENCES="MIT"
 SLOT="0"
 PLATFORMS="~amd64"
 MYOPTIONS=""
+
 DEPENDENCIES="
     build:
         sys-libs/wayland-protocols
+        virtual/pkg-config
     build+run:
         sys-libs/wayland
         x11-libs/libxkbcommon
 "
+
